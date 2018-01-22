@@ -330,9 +330,11 @@ export class ImageCropperComponent {
             if (ctx) {
                 ctx.drawImage(this.originalImage, left, top, width, height, 0, 0, width * resizeRatio, height * resizeRatio);
                 this.croppedImage = cropCanvas.toDataURL('image/' + this.format);
-                if (this.croppedImage.length > 10) {
-                    this.imageCropped.emit(this.croppedImage);
-                }
+                setTimeout(()=>{
+                    if (this.croppedImage.length > 10) {
+                        this.imageCropped.emit(this.croppedImage);
+                    }
+                },300)
             }
         }
     }
